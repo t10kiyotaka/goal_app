@@ -1,0 +1,15 @@
+<h1>Goals#new</h1>
+
+<%= form_for @goal do |f| %>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+  <br>
+
+    <%= f.label :priority %>
+    <%= f.select(:priority, 1..5) %>
+
+    <%= f.label :progress_percent %>
+    <%= range_field(:progress_percent, in: 1..100) %>
+
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
