@@ -1,24 +1,20 @@
 class GoalsController < ApplicationController
-  def index
-    @goals = Goal.all
-  end
 
-  def new
-    @goal = Goal.new
-  end
 
   def create
-    @goal = Goal.new(goal_params)
-    if @goal.save!
-      redirect_to goals_path
-      flash[:success] = "Successfully Created!"
-    else
-      render 'new'
-    end
+    @user = User.find(params[:user_id])
+    @user.goals.create!(goal_params)
+    redirect_to user_path(@user)
+  end
+
+  def edit
+    @user = User.find(params[:user_id])
+    @goal = @user.goals.find(params[:id])
   end
 
   private
     def goal_params
       params.require(:goal).permit(:description, :priority, :progress_percent)
     end
+
 end
