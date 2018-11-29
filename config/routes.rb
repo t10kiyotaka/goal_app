@@ -1,12 +1,5 @@
 Rails.application.routes.draw do
-
   devise_for :users
-  root 'home#index'
-  resources :users, shallow: true do
-    resources :goals, shallow: true do
-      resources :tasks
-      resources :comments
-    end
-  end
-  
+  root 'goals#index'
+  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
