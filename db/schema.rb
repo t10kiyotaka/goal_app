@@ -13,7 +13,7 @@
 ActiveRecord::Schema.define(version: 2018_11_27_053014) do
 
   create_table "comments", force: :cascade do |t|
-    t.text "body"
+    t.text "body", null: false
     t.integer "user_id"
     t.integer "goal_id"
     t.datetime "created_at", null: false
@@ -23,9 +23,9 @@ ActiveRecord::Schema.define(version: 2018_11_27_053014) do
   end
 
   create_table "goals", force: :cascade do |t|
-    t.text "description"
-    t.integer "priority"
-    t.integer "progress_percent"
+    t.text "description", null: false
+    t.integer "priority", default: 1, null: false
+    t.integer "progress_percent", default: 0, null: false
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -33,9 +33,9 @@ ActiveRecord::Schema.define(version: 2018_11_27_053014) do
   end
 
   create_table "tasks", force: :cascade do |t|
-    t.text "description"
-    t.integer "priority"
-    t.integer "progress_percent"
+    t.text "description", null: false
+    t.integer "priority", default: 1, null: false
+    t.integer "progress_percent", default: 0, null: false
     t.integer "user_id"
     t.integer "goal_id"
     t.datetime "created_at", null: false
