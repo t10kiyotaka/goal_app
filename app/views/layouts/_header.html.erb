@@ -1,0 +1,27 @@
+<header>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-primary">
+    <div class="container">
+    <a class="navbar-brand text-light" href="/">GoalApp</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav ml-auto">
+        <% if user_signed_in? %>
+          <%= link_to "My page", user_path(@user), class: "nav-item nav-link text-light" %>
+          <%= link_to "Log out", destroy_user_session_path, class: "nav-item nav-link text-light" %>
+        <% else %>
+          <%= link_to "Sign up", new_user_registration_path, class: "nav-item nav-link text-light" %>
+          <%= link_to "Log in", new_user_session_path, class: "nav-item nav-link text-light" %>
+        <% end %>
+      </div>
+    </div>
+  </nav>
+
+  <% if flash.any? %>
+    <p class="notice"><%= notice %></p>
+    <p class="alert"><%= alert %></p>
+  <% end %>
+
+</header>
