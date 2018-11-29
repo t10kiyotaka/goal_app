@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :users, shallow: true do
     resources :goals, shallow: true do
       resources :tasks
-      resources :comments
+      resources :comments, only: [:create, :destroy]
     end
   end
 end
