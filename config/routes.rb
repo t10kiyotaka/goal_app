@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   devise_for :users
-  root 'goals#index'
+  root 'home#index'
   resources :users, shallow: true do
     resources :goals, shallow: true do
       resources :tasks
