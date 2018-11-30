@@ -1,7 +1,7 @@
 <h1>Users#show</h1>
 
 <div class="row">
-  <div class="col-md-8">
+  <div class="col<%= "-md-8" if correct_user %>">
     <h3>My Goals</h3>
     <% @user.goals.each do |g| %>
       <div class="card my-2">
@@ -16,16 +16,20 @@
             </div>
           </div>
           <%= link_to "Show", goal_path(g), class: "btn btn-primary" %>
-          <%= link_to "Edit", edit_goal_path(g), class: "btn btn-primary" %>
-          <%= link_to "Delete", goal_path(g), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+          <% if correct_user %>
+            <%= link_to "Edit", edit_goal_path(g), class: "btn btn-primary" %>
+            <%= link_to "Delete", goal_path(g), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+          <% end %>
         </div>
       </div>
     <% end %>
   </div>
 
-  <div class="col-md-4">
-    <h3>Add new goals</h3>
-    <%= render 'goals/new' %>
-  </div>
+  <% if correct_user %>
+    <div class="col-md-4">
+      <h3>Add new goals</h3>
+      <%= render 'goals/new' %>
+    </div>
+  <% end %>
 
 </div>
