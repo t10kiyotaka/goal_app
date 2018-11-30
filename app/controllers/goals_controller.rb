@@ -1,4 +1,6 @@
 class GoalsController < ApplicationController
+  before_action :authenticate_user!
+  before_action :find_goal, except: [:create]
 
   def create
     @user = User.find(params[:user_id])
@@ -7,15 +9,12 @@ class GoalsController < ApplicationController
   end
 
   def show
-    @goal = Goal.find(params[:id])
   end
 
   def edit
-    @goal = Goal.find(params[:id])
   end
 
   def update
-    @goal = Goal.find(params[:id])
     if @goal.update(goal_params)
       redirect_to user_path(current_user)
     else
@@ -24,7 +23,6 @@ class GoalsController < ApplicationController
   end
 
   def destroy
-    @goal = Goal.find(params[:id])
     @goal.destroy
     redirect_to user_path(current_user)
   end
@@ -33,6 +31,10 @@ class GoalsController < ApplicationController
   private
     def goal_params
       params.require(:goal).permit(:description, :priority, :progress_percent)
+    end
+
+    def find_goal
+      @goal = Goal.find(params[:id])
     end
 
 end

@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     @goal = Goal.find(params[:goal_id])
     @user = User.find_by(id: @goal.user_id)
