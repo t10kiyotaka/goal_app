@@ -1,0 +1,55 @@
+<h1>Goals#show</h1>
+
+<div class="row">
+  <div class="col<%= "-md-8" if user_owned_goal %>">
+
+    <h3>Goal</h3>
+    <div class="card my-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= @goal.description %></h5>
+        <p class="card-text">
+          Priority: <%= @goal.priority %> /
+          <span class="text-muted">Created_at: <%= @goal.created_at %></span> /
+          <span class="text-muted">Updated_at: <%= @goal.updated_at %></span>
+        </p>
+        <div class="progress mb-3">
+          <% progress = @goal.progress_percent %>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+              style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
+            <%= progress %>%
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>Tasks</h3>
+    <% @goal.tasks.each do |t| %>
+      <div class="card my-2">
+        <div class="card-body">
+          <h5 class="card-title my-0"><%= t.description %></h5>
+          <p class="text-right text-muted my-0">Priority: <%= t.priority %></p>
+          <div class="progress mb-3">
+            <% progress = t.progress_percent %>
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+                style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
+              <%= progress %>%
+            </div>
+          </div>
+          <% if user_owned_goal %>
+            <%= link_to "Edit", edit_task_path(t), class: "btn btn-primary" %>
+            <%= link_to "Delete", task_path(t), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+
+  </div>
+
+  <% if user_owned_goal %>
+    <div class="col-md-4">
+      <h3>Add new tasks</h3>
+      <%= render 'tasks/new' %>
+    </div>
+  <% end %>
+
+</div>
