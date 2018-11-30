@@ -1,0 +1,14 @@
+<h1>Goals#edit</h1>
+
+<%= form_for @goal do |f| %>
+  <%= f.label :description %>
+  <%= f.text_area :description, class: "form-control" %>
+
+  <%= f.label :priority %>
+  <%= f.select(:priority, 1..5, {}, class: "form-control") %>
+
+  <%= f.label :progress_percent %>
+  <%= f.range_field(:progress_percent, in: 1..100, class: "form-control-range") %>
+
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>
