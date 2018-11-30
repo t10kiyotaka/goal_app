@@ -6,6 +6,10 @@ class GoalsController < ApplicationController
     redirect_to user_path(@user)
   end
 
+  def show
+    @goal = Goal.find(params[:id])
+  end
+
   def edit
     @goal = Goal.find(params[:id])
   end
