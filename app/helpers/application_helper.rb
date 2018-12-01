@@ -1,6 +1,6 @@
 module ApplicationHelper
 
-  def user_owned_goal
+  def user_owned_goal?
     @goal = Goal.find(params[:id])
     if !!current_user
       @goal.user_id == current_user.id ? true : false
