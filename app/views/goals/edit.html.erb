@@ -1,6 +1,6 @@
 <h1>Goals#edit</h1>
 
-<%= form_for @goal do |f| %>
+<%= form_with model: @goal do |f| %>
   <%= f.label :description %>
   <%= f.text_area :description, class: "form-control" %>
 
