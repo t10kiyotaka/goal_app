@@ -1,12 +1,16 @@
 module ApplicationHelper
 
-  def user_owned_goal
+  def user_owned_goal?
     @goal = Goal.find(params[:id])
-    true if @goal.user_id == current_user.id
+    if !!current_user
+      @goal.user_id == current_user.id ? true : false
+    end
   end
 
-  def correct_user
+  def logged_in_user?
     @user = User.find(params[:id])
-    true if @user.id == current_user.id
+    if !!current_user
+      @user.id == current_user.id ? true : false
+    end
   end
 end
