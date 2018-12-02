@@ -30,44 +30,10 @@
     </nav>
     <div class="tab-content" id="nav-tabContent">
       <div class="tab-pane fade show active" id="nav-tasks" role="tabpanel" aria-labelledby="nav-tasks-tab">
-
-        <h3>Tasks</h3>
-        <% @goal.tasks.each do |t| %>
-          <div class="card my-2">
-            <div class="card-body">
-              <h5 class="card-title my-0"><%= t.description %></h5>
-              <p class="text-right text-muted my-0">Priority: <%= t.priority %></p>
-              <div class="progress mb-3">
-                <% progress = t.progress_percent %>
-                <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
-                    style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
-                  <%= progress %>%
-                </div>
-              </div>
-              <% if user_owned_goal? %>
-                <%= link_to "Edit", edit_task_path(t), class: "btn btn-primary" %>
-                <%= link_to "Delete", task_path(t), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-
+        <%= render 'goal_tasks' %>
       </div>
       <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
-
-        <h3>Comments</h3>
-        <% @goal.comments.each do |c| %>
-          <div class="card my-2">
-            <div class="card-body">
-              <p class="my-0">user_id: <%= @comment_owned_user_id = c.user_id %><%= simple_format(c.body, class: "my-0") %></p>
-              <% if user_owned_comments? %>
-                <%= link_to "Edit", edit_comment_path(c), class: "btn btn-primary" %>
-                <%= link_to "Delete", comment_path(c), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
-              <% end %>
-            </div>
-          </div>
-        <% end %>
-
+        <%= render 'goal_comments' %>
       </div>
     </div>
 
@@ -81,7 +47,7 @@
       <% end %>
 
       <h3 class="mt-3">Add new comments</h3>
-      <%= render 'comments/new' %>
+      <%= render 'comments/new' %>      
     </div>
   <% end %>
 
