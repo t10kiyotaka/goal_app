@@ -1,0 +1,5 @@
+<%= form_with model: [@goal, @goal.comments.build] do |f| %>
+  <%= f.text_area :body, class: "form-control" %>
+  <br>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

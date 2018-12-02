@@ -1,0 +1,6 @@
+<h1>Comments#edit</h1>
+<%= form_with model: @comment do |f| %>
+  <%= f.text_area :body, class: "form-control" %>
+  <br>
+  <%= f.submit class: "btn btn-primary" %>
+<% end %>

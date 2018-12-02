@@ -1,0 +1,20 @@
+<h3>Tasks</h3>
+<% @goal.tasks.each do |t| %>
+  <div class="card my-2">
+    <div class="card-body">
+      <h5 class="card-title my-0"><%= t.description %></h5>
+      <p class="text-right text-muted my-0">Priority: <%= t.priority %></p>
+      <div class="progress mb-3">
+        <% progress = t.progress_percent %>
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+            style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
+          <%= progress %>%
+        </div>
+      </div>
+      <% if user_owned_goal? %>
+        <%= link_to "Edit", edit_task_path(t), class: "btn btn-primary" %>
+        <%= link_to "Delete", task_path(t), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+      <% end %>
+    </div>
+  </div>
+<% end %>
