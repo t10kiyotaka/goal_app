@@ -1,6 +1,10 @@
 class GoalsController < ApplicationController
-  before_action :authenticate_user!, except: [:show]
-  before_action :find_goal, except: [:create]
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :find_goal, except: [:index, :create]
+
+  def index
+    @goals = Goal.all.order(created_at: :desc)
+  end
 
   def create
     @user = User.find(params[:user_id])
