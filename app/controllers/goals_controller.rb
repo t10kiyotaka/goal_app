@@ -3,7 +3,7 @@ class GoalsController < ApplicationController
   before_action :find_goal, except: [:index, :create]
 
   def index
-    @goals = Goal.all.order(created_at: :desc)
+    @goals = Goal.page(params[:page]).per(5)
   end
 
   def create

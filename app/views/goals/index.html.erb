@@ -2,18 +2,22 @@
 
 <h3>All Goals</h3>
 <% @goals.each do |g| %>
-  <div class="card my-2">
-    <div class="card-body">
-      <h5 class="card-title"><%= g.description %></h5>
-      <p class="card-text text-muted">Created_at: <%= g.created_at %></p>
-      <div class="progress mb-3">
-        <% progress = g.progress_percent %>
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
-            style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
-          <%= progress %>%
+  <a href="<%= goal_path(g) %>" class="card-link">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title"><%= g.description %></h5>
+        <p class="text-muted">user_id: <%= g.user_id %></p>
+        <div class="progress mb-3">
+          <% progress = g.progress_percent %>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+              style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
+            <%= progress %>%
+          </div>
         </div>
+
       </div>
-      <%= link_to "Show", goal_path(g), class: "btn btn-primary" %>
     </div>
-  </div>
+  </a>
 <% end %>
+
+<%= paginate @goals,theme: 'twitter-bootstrap-4' %>
