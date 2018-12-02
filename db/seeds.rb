@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+(1..100).to_a.each do |i|
+  User.create!(email: "sample#{i}@text.com", password: "password")
+end
+
+100.times do |i|
+  Goal.create!(description: "sample-#{i}", priority: 1,
+    progress_percent: 50, user_id: 1)
+end

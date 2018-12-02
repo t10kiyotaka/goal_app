@@ -14,8 +14,8 @@ ActiveRecord::Schema.define(version: 2018_11_27_053014) do
 
   create_table "comments", force: :cascade do |t|
     t.text "body", null: false
-    t.integer "user_id"
-    t.integer "goal_id"
+    t.integer "user_id", null: false
+    t.integer "goal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_comments_on_goal_id"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 2018_11_27_053014) do
     t.text "description", null: false
     t.integer "priority", default: 1, null: false
     t.integer "progress_percent", default: 0, null: false
-    t.integer "user_id"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["user_id"], name: "index_goals_on_user_id"
@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(version: 2018_11_27_053014) do
     t.text "description", null: false
     t.integer "priority", default: 1, null: false
     t.integer "progress_percent", default: 0, null: false
-    t.integer "user_id"
-    t.integer "goal_id"
+    t.integer "user_id", null: false
+    t.integer "goal_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_tasks_on_goal_id"
