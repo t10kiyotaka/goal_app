@@ -13,6 +13,8 @@ class GoalsController < ApplicationController
   end
 
   def show
+    find_goal
+    @user = User.find_by(id: @goal.user_id)
   end
 
   def edit
