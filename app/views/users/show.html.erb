@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col<%= "-md-8" if logged_in_user? %>">
-    <h3>My Goals</h3>
+    <h3><%= image_tag(@user.get_gravatar_url, size: "30x30") %> <%= @user.name %>'s Goals</h3>
     <% @user.goals.each do |g| %>
       <div class="card my-2">
         <div class="card-body">
@@ -25,11 +25,15 @@
     <% end %>
   </div>
 
-  <% if logged_in_user? %>
-    <div class="col-md-4">
+  <div class="col-md-4">
+    <div class="text-center">
+      <%= image_tag(@user.get_gravatar_url) %>
+    </div>
+    <h4 class="text-center"><%= @user.name %></h4>
+    <% if logged_in_user? %>
       <h3>Add new goals</h3>
       <%= render 'goals/new' %>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 
 </div>
