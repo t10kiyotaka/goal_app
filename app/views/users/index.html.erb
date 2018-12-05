@@ -4,7 +4,7 @@
   <a href="<%= user_path(u) %>">
     <div class="card my-2">
       <div class="card-body">
-        <%= image_tag(u.get_gravatar_url, size: "30x30") %><span class="h4 ml-3"><%= u.name %></span>
+        <%= image_tag(get_gravatar_url(u.email), size: "30x30") %><span class="h4 ml-3"><%= u.name %></span>
       </div>
     </div>
   </a>

@@ -19,14 +19,14 @@ class TasksController < ApplicationController
   def update
     @task = Task.find(params[:id])
     @task.update(task_params)
-    @goal = Goal.find_by(id: @task.goal_id)
+    @goal = @task.goal
     redirect_to goal_path(@goal)
   end
 
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
-    @goal = Goal.find_by(id: @task.goal_id)
+    @goal = @task.goal
     redirect_to goal_path(@goal)
   end
 
