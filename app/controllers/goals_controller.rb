@@ -14,7 +14,7 @@ class GoalsController < ApplicationController
 
   def show
     find_goal
-    @user = User.find_by(id: @goal.user_id)
+    @user = @goal.user
   end
 
   def edit

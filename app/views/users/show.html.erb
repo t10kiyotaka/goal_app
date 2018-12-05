@@ -2,7 +2,7 @@
 
 <div class="row">
   <div class="col<%= "-md-8" if logged_in_user? %>">
-    <h3><%= image_tag(@user.get_gravatar_url, size: "30x30") %> <%= @user.name %>'s Goals</h3>
+    <h3><%= image_tag(get_gravatar_url(@user.email), size: "30x30") %> <%= @user.name %>'s Goals</h3>
     <% @user.goals.each do |g| %>
       <div class="card my-2">
         <div class="card-body">
@@ -27,7 +27,7 @@
 
   <div class="col-md-4">
     <div class="text-center">
-      <%= image_tag(@user.get_gravatar_url) %>
+      <%= image_tag(get_gravatar_url(@user.email)) %>
     </div>
     <h4 class="text-center"><%= @user.name %></h4>
     <% if logged_in_user? %>
