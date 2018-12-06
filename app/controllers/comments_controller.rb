@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :authenticate_user!
+  before_action :find_comment, except: [:create]
 
   def create
     @goal = Goal.find(params[:goal_id])
@@ -15,20 +16,17 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    find_comment
   end
 
   def update
-    find_comment
     @comment.update(comment_params)
-    @goal = @comment.goal_id
+    @goal = @comment.goal
     redirect_to goal_path(@goal)
   end
 
   def destroy
-    find_comment
     @comment.destroy
-    @goal = @comment.goal_id
+    @goal = @comment.goal
     respond_to do |format|
       format.html { redirect_to goal_path(@goal) }
       format.js
