@@ -1,11 +1,14 @@
-<h3>Comments</h3>
+<h3 id="coment_line">Comments</h3>
 <% @goal.comments.each do |c| %>
-  <div class="card my-2">
+  <div class="card my-2" id="comment_<%= c.id %>">
     <div class="card-body">
-      <p class="my-0">user_id: <%= @comment_owned_user_id = c.user_id %><%= simple_format(c.body, class: "my-0") %></p>
+      <p class="my-0">
+        user_id: <%= @comment_owned_user_id = c.user_id %>
+        <%= simple_format(c.body, class: "my-0") %>
+      </p>
       <% if user_owned_comments? %>
         <%= link_to "Edit", edit_comment_path(c), class: "btn btn-primary" %>
-        <%= link_to "Delete", comment_path(c), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+        <%= link_to "Delete", comment_path(c), method: :delete, class: "btn btn-danger", remote: true %>
       <% end %>
     </div>
   </div>

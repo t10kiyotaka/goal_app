@@ -1,5 +1,5 @@
 <%= form_with model: [@goal, @goal.comments.build] do |f| %>
-  <%= f.text_area :body, class: "form-control" %>
+  <%= f.text_area :body, class: "form-control", id: "new_comment_form" %>
   <br>
-  <%= f.submit class: "btn btn-primary" %>
+  <%= f.submit class: "btn btn-primary", data: { "disable-with": "Sending..." } %>
 <% end %>

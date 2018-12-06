@@ -5,7 +5,10 @@ class CommentsController < ApplicationController
     @goal = Goal.find(params[:goal_id])
     @comment = @goal.comments.build(comment_params.merge(user_id: current_user.id))
     if @comment.save!
-      redirect_to goal_path(@goal)
+      respond_to do |format|
+        format.html { redirect_to goal_path(@goal) }
+        format.js
+      end
     else
       render 'goals/show'
     end
@@ -26,7 +29,10 @@ class CommentsController < ApplicationController
     find_comment
     @comment.destroy
     @goal = @comment.goal_id
-    redirect_to goal_path(@goal)
+    respond_to do |format|
+      format.html { redirect_to goal_path(@goal) }
+      format.js
+    end
   end
 
   private
