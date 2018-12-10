@@ -1,4 +1,4 @@
-<h1>Users#show</h1>
+<h1>Mypage</h1>
 
 <div class="row">
   <div class="col-md-8">
@@ -15,7 +15,9 @@
               <%= progress %>%
             </div>
           </div>
-          <%= link_to "Show", goal_path(g), class: "btn btn-primary" %>
+          <%= link_to "Show", mygoal_path(g), class: "btn btn-primary" %>
+          <%= link_to "Edit", edit_goal_path(g), class: "btn btn-primary" %>
+          <%= link_to "Delete", goal_path(g), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
         </div>
       </div>
     <% end %>
@@ -26,6 +28,8 @@
       <%= image_tag(get_gravatar_url(@user.email)) %>
     </div>
     <h4 class="text-center"><%= @user.name %></h4>
+    <h3>Add new goals</h3>
+    <%= render 'goals/new' %>
   </div>
 
 </div>

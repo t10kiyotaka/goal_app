@@ -6,7 +6,7 @@ class TasksController < ApplicationController
     @user = User.find_by(id: @goal.user_id)
     @goal.tasks.build(task_params.merge(user_id: @user.id))
     if @goal.save!
-      redirect_to goal_path(@goal)
+      redirect_to mygoal_path(@goal)
     else
       render 'goals/show'
     end
@@ -20,14 +20,14 @@ class TasksController < ApplicationController
     @task = Task.find(params[:id])
     @task.update(task_params)
     @goal = @task.goal
-    redirect_to goal_path(@goal)
+    redirect_to mygoal_path(@goal)
   end
 
   def destroy
     @task = Task.find(params[:id])
     @task.destroy
     @goal = @task.goal
-    redirect_to goal_path(@goal)
+    redirect_to mygoal_path(@goal)
   end
 
   private

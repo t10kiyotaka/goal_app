@@ -1,0 +1,2 @@
+module LoggedinUsersHelper
+end

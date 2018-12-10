@@ -9,7 +9,7 @@ class GoalsController < ApplicationController
   def create
     @user = User.find(params[:user_id])
     @user.goals.create!(goal_params)
-    redirect_to user_path(@user)
+    redirect_to mypage_path
   end
 
   def show
@@ -22,7 +22,7 @@ class GoalsController < ApplicationController
 
   def update
     if @goal.update(goal_params)
-      redirect_to user_path(current_user)
+      redirect_to mypage_path
     else
       render 'edit'
     end
@@ -30,7 +30,7 @@ class GoalsController < ApplicationController
 
   def destroy
     @goal.destroy
-    redirect_to user_path(current_user)
+    redirect_to mypage_path
   end
 
 
