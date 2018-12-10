@@ -14,9 +14,4 @@ module ApplicationHelper
     end
   end
 
-  def user_owned_comments?
-    if !!current_user
-      @comment_owned_user_id == current_user.id ? true : false
-    end
-  end
 end
