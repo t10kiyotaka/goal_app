@@ -15,6 +15,7 @@ class GoalsController < ApplicationController
   def show
     find_goal
     @user = @goal.user
+    redirect_to me_goal_path(@goal) if check_owened_user?
   end
 
   def edit
@@ -41,6 +42,12 @@ class GoalsController < ApplicationController
 
     def find_goal
       @goal = Goal.find(params[:id])
+    end
+
+    def check_owened_user?
+      @goal = Goal.find(params[:id])
+      @user = @goal.user
+      current_user.present? && current_user == @user ? true : false
     end
 
 end
