@@ -3,10 +3,10 @@ Rails.application.routes.draw do
   root 'goals#index'
   get 'mypage', to: 'loggedin_users#show'
   get 'mygoals/:id', to: 'loggedin_user_goals#show', as: 'mygoal'
-  resources :users, shallow: true do
-    resources :goals, shallow: true do
-      resources :tasks
-      resources :comments, except: [:index, :show]
+  resources :users, only: [:index, :show], shallow: true do
+    resources :goals, except: [:new], shallow: true do
+      resources :tasks, except: [:index, :show, :new]
+      resources :comments, except: [:index, :show, :new]
     end
   end
 end
