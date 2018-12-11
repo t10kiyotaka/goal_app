@@ -1,4 +1,4 @@
-<h1>Mypage</h1>
+<h1>My page</h1>
 
 <div class="row">
   <div class="col-md-8">
@@ -15,7 +15,7 @@
               <%= progress %>%
             </div>
           </div>
-          <%= link_to "Show", mygoal_path(g), class: "btn btn-primary" %>
+          <%= link_to "Show", me_goal_path(g), class: "btn btn-primary" %>
           <%= link_to "Edit", edit_goal_path(g), class: "btn btn-primary" %>
           <%= link_to "Delete", goal_path(g), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
         </div>
