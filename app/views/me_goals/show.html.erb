@@ -1,0 +1,50 @@
+<h1>Mygoal</h1>
+
+<div class="row">
+  <div class="col<%= "-md-8" if user_owned_goal? %>">
+
+    <h3><%= image_tag(get_gravatar_url(@user.email), size: "30x30") %> <%= @user.name %>'s Goal</h3>
+    <div class="card my-2">
+      <div class="card-body">
+        <h5 class="card-title"><%= @goal.description %></h5>
+        <p class="card-text">
+          Priority: <%= @goal.priority %> /
+          <span class="text-muted">Created_at: <%= @goal.created_at %></span> /
+          <span class="text-muted">Updated_at: <%= @goal.updated_at %></span>
+        </p>
+        <div class="progress mb-3">
+          <% progress = @goal.progress_percent %>
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+              style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
+            <%= progress %>%
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <nav>
+      <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-tasks-tab" data-toggle="tab" href="#nav-tasks" role="tab" aria-controls="nav-tasks" aria-selected="true">Tasks</a>
+        <a class="nav-item nav-link" id="nav-comments-tab" data-toggle="tab" href="#nav-comments" role="tab" aria-controls="nav-comments" aria-selected="false">Comments</a>
+      </div>
+    </nav>
+    <div class="tab-content" id="nav-tabContent">
+      <div class="tab-pane fade show active" id="nav-tasks" role="tabpanel" aria-labelledby="nav-tasks-tab">
+        <%= render 'goal_tasks' %>
+      </div>
+      <div class="tab-pane fade" id="nav-comments" role="tabpanel" aria-labelledby="nav-comments-tab">
+        <%= render 'goal_comments' %>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="col-md-4">
+    <h3>Add new tasks</h3>
+    <%= render 'tasks/new' %>
+
+    <h3 class="mt-3">Add new comments</h3>
+    <%= render 'comments/new' %>
+  </div>
+
+</div>
