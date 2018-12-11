@@ -9,4 +9,7 @@ Rails.application.routes.draw do
       resources :comments, except: [:index, :show, :new]
     end
   end
+  resource :me, only: %i[show] do
+    resources :goals, only: %i[show]
+  end
 end

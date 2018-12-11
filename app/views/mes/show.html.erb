@@ -1,0 +1,35 @@
+<h1>My page</h1>
+
+<div class="row">
+  <div class="col-md-8">
+    <h3><%= image_tag(get_gravatar_url(@user.email), size: "30x30") %> <%= @user.name %>'s Goals</h3>
+    <% @user.goals.each do |g| %>
+      <div class="card my-2">
+        <div class="card-body">
+          <h5 class="card-title"><%= g.description %></h5>
+          <p class="card-text text-muted">Created_at: <%= g.created_at %></p>
+          <div class="progress mb-3">
+            <% progress = g.progress_percent %>
+            <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
+                style="width: <%= progress %>%;" aria-valuenow="<%= progress %>" aria-valuemin="0" aria-valuemax="100">
+              <%= progress %>%
+            </div>
+          </div>
+          <%= link_to "Show", me_goal_path(g), class: "btn btn-primary" %>
+          <%= link_to "Edit", edit_goal_path(g), class: "btn btn-primary" %>
+          <%= link_to "Delete", goal_path(g), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-md-4">
+    <div class="text-center">
+      <%= image_tag(get_gravatar_url(@user.email)) %>
+    </div>
+    <h4 class="text-center"><%= @user.name %></h4>
+    <h3>Add new goals</h3>
+    <%= render 'goals/new' %>
+  </div>
+
+</div>
