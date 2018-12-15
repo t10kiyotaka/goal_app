@@ -9,7 +9,7 @@ Rails.application.routes.draw do
 
   resource :me, controller: 'me', only: %i[show]
   namespace :my do
-    resources :goals, only: %i[show], shallow: true do
+    resources :goals, except: %i[new], shallow: true do
       resources :tasks, except: %i[index show new]
     end
   end

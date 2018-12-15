@@ -16,8 +16,8 @@
             </div>
           </div>
           <%= link_to "Show", my_goal_path(g), class: "btn btn-primary" %>
-          <%= link_to "Edit", edit_goal_path(g), class: "btn btn-primary" %>
-          <%= link_to "Delete", goal_path(g), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
+          <%= link_to "Edit", edit_my_goal_path(g), class: "btn btn-primary" %>
+          <%= link_to "Delete", my_goal_path(g), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
         </div>
       </div>
     <% end %>
@@ -29,7 +29,7 @@
     </div>
     <h4 class="text-center"><%= @user.name %></h4>
     <h3>Add new goals</h3>
-    <%= render 'goals/new' %>
+    <%= render 'my/goals/new' %>
   </div>
 
 </div>
