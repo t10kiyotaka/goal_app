@@ -1,4 +1,4 @@
-class MeGoalsController < ApplicationController
+class My::GoalsController < ApplicationController
   def show
     @goal = Goal.find(params[:id])
     @user = @goal.user
