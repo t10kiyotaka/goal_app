@@ -1,7 +1,7 @@
 <h1>Goals#show</h1>
 
 <div class="row">
-  <div class="col<%= "-md-8" if user_owned_goal? %>">
+  <div class="col<%= "-md-8" if user_signed_in? %>">
 
     <h3><%= image_tag(get_gravatar_url(@user.email), size: "30x30") %> <%= @user.name %>'s Goal</h3>
     <div class="card my-2">
@@ -39,9 +39,11 @@
 
   </div>
 
-  <div class="col-md-4">
-    <h3 class="mt-3">Add new comments</h3>
-    <%= render 'comments/new' %>
-  </div>
-
+  <% if user_signed_in? %>
+    <div class="col-md-4">
+      <h3 class="mt-3">Add new comments</h3>
+      <%= render 'comments/new' %>
+    </div>
+  <% end %>
+  
 </div>
