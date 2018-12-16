@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show], shallow: true do
     resources :goals, except: [:new], shallow: true do
       resources :comments, except: [:index, :show, :new]
+      resources :likes, only: %i[create destroy]
     end
   end
 

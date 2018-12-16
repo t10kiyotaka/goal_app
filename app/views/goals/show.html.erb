@@ -19,6 +19,13 @@
             <%= progress %>%
           </div>
         </div>
+
+        <%= @goal.likes.count %>
+        <% if Like.where(goal_id: @goal.id, user_id: current_user.id).present? %>
+          <%= link_to "Delete Like", like_path(@goal), method: :delete %>
+        <% else %>
+          <%= link_to "Like", goal_likes_path(@goal), method: :post %>
+        <% end %>
       </div>
     </div>
 
@@ -45,5 +52,5 @@
       <%= render 'comments/new' %>
     </div>
   <% end %>
-  
+
 </div>
