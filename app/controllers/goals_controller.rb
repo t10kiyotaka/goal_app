@@ -2,6 +2,7 @@ class GoalsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :find_goal, except: [:index, :create]
   before_action :redirect_incorrect_user, except: [:index, :show]
+  before_action :redirect_correct_user, only: %i[show]
 
   def index
     @goals = Goal.page(params[:page]).per(5)
@@ -16,7 +17,6 @@ class GoalsController < ApplicationController
   def show
     find_goal
     @user = @goal.user
-    redirect_to my_goal_path(@goal) if check_owened_user?
   end
 
   def edit
@@ -53,6 +53,10 @@ class GoalsController < ApplicationController
 
     def redirect_incorrect_user
       redirect_to root_url unless check_owened_user?
+    end
+
+    def redirect_correct_user
+      redirect_to my_goal_path(@goal) if check_owened_user?
     end
 
 end

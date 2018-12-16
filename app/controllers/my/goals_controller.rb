@@ -34,6 +34,6 @@ class My::GoalsController < ApplicationController
     end
 
     def find_goal
-      @goal = Goal.find(params[:id])
+      @goal = current_user.goals.find(params[:id])
     end
 end
