@@ -5,7 +5,12 @@
   <a href="<%= goal_path(g) %>" class="card-link">
     <div class="card">
       <div class="card-body">
-        <h5 class="card-title"><%= image_tag(get_gravatar_url(g.user.email), size: 30) %> <%= g.description %></h5>
+        <h5 class="card-title">
+          <%= image_tag(get_gravatar_url(g.user.email), size: 30) %>
+          <% @g = g %>
+          <%= render 'goals/achieve' %>
+          <%= g.description %>
+        </h5>
         <div class="progress mb-3">
           <% progress = g.progress_percent %>
           <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"
