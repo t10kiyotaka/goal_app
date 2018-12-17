@@ -4,6 +4,7 @@
   <div class="col-md-8">
     <h3><%= image_tag(get_gravatar_url(@user.email), size: "30x30") %> <%= @user.name %>'s Goals</h3>
     <% @user.goals.each do |g| %>
+    <a href="<%= goal_path(g) %>">
       <div class="card my-2">
         <div class="card-body">
           <h5 class="card-title"><%= g.description %></h5>
@@ -15,9 +16,13 @@
               <%= progress %>%
             </div>
           </div>
-          <%= link_to "Show", goal_path(g), class: "btn btn-primary" %>
+
+          <% @g = g %>
+          <%= render 'likes/show' %>
+
         </div>
       </div>
+    </a>
     <% end %>
   </div>
 

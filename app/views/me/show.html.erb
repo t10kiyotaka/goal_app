@@ -15,6 +15,10 @@
               <%= progress %>%
             </div>
           </div>
+
+          <% @g = g %>
+          <%= render 'likes/show' %>
+
           <%= link_to "Show", my_goal_path(g), class: "btn btn-primary" %>
           <%= link_to "Edit", edit_my_goal_path(g), class: "btn btn-primary" %>
           <%= link_to "Delete", my_goal_path(g), method: :delete, data: { confirm: "You sure?" }, class: "btn btn-danger" %>
