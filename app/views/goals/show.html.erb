@@ -6,7 +6,10 @@
     <h3><%= image_tag(get_gravatar_url(@user.email), size: "30x30") %> <%= @user.name %>'s Goal</h3>
     <div class="card my-2">
       <div class="card-body">
-        <h5 class="card-title"><%= @goal.description %></h5>
+        <h5 class="card-title">
+          <%= render 'goals/achieve' %>
+          <%= @goal.description %>
+        </h5>
         <p class="card-text">
           Priority: <%= @goal.priority %> /
           <span class="text-muted">Created_at: <%= @goal.created_at %></span> /

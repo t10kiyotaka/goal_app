@@ -6,7 +6,11 @@
     <% @user.goals.each do |g| %>
       <div class="card my-2">
         <div class="card-body">
-          <h5 class="card-title"><%= g.description %></h5>
+          <h5 class="card-title">
+            <% @g = g %>
+            <%= render 'goals/achieve' %>
+            <%= g.description %>
+          </h5>
           <p class="card-text text-muted">Created_at: <%= g.created_at %></p>
           <div class="progress mb-3">
             <% progress = g.progress_percent %>
