@@ -2,7 +2,11 @@
 <% @goal.tasks.each do |t| %>
   <div class="card my-2">
     <div class="card-body">
-      <h5 class="card-title my-0"><%= t.description %></h5>
+      <h5 class="card-title my-0">
+        <% @task = t %>
+        <%= render 'tasks/achieve' %>
+        <%= t.description %>
+      </h5>
       <p class="text-right text-muted my-0">Priority: <%= t.priority %></p>
       <div class="progress mb-3">
         <% progress = t.progress_percent %>
