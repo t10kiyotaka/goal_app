@@ -7,7 +7,6 @@ class GoalsController < ApplicationController
   end
 
   def show
-    find_goal
     @user = @goal.user
   end
 
