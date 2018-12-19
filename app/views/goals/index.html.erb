@@ -1,6 +1,12 @@
 <h1>Goals#index</h1>
 
 <h3>All Goals</h3>
+
+<%= form_with url: request.referer, method: :get, local: true, class: "input-group mb-2 col-md-6 ml-auto" do |f| %>
+  <%= f.select :order, order_hash, { prompt: "Change order" }, class: "form-control" %>
+  <%= f.submit "Change", class: "btn btn-outline-primary" %>
+<% end %>
+
 <% @goals.each do |g| %>
   <a href="<%= goal_path(g) %>" class="card-link">
     <div class="card">
