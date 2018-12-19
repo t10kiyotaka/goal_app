@@ -18,7 +18,8 @@ module ApplicationHelper
     order_hash = { "Recently updated": "Recently updated",
                    "Recently created": "Recently created",
                    "Least recently updated": "Least recently updated",
-                   "Least recently created": "Least recently updated"
+                   "Least recently created": "Least recently updated",
+                   "Most liked": "Most liked"
                    }
   end
 
