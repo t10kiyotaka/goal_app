@@ -3,7 +3,17 @@ class GoalsController < ApplicationController
   before_action :redirect_owened_user, only: %i[show]
 
   def index
-    @goals = Goal.page(params[:page]).per(5)
+    @goals = Goal.page(params[:page]).per(5).order(created_at: :desc)
+    case params[:name]
+    when "Recently updated"
+      @goals = Goal.page(params[:page]).per(5).order(updated_at: :desc)
+    when "Recently created"
+      @goals = Goal.page(params[:page]).per(5).order(created_at: :desc)
+    when "Least recently updated"
+      @goals = Goal.page(params[:page]).per(5).order(updated_at: :asc)
+    when "Least recently created"
+      @goals = Goal.page(params[:page]).per(5).order(created_at: :asc)
+    end
   end
 
   def show
