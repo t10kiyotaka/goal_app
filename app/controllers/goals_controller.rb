@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
 
   def index
     @goals = Goal.page(params[:page]).per(5).order(created_at: :desc)
-    case params[:name]
+    case params[:order]
     when "Recently updated"
       @goals = Goal.page(params[:page]).per(5).order(updated_at: :desc)
     when "Recently created"
