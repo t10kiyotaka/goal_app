@@ -7,7 +7,11 @@
         <%= render 'tasks/achieve' %>
         <%= t.description %>
       </h5>
-      <p class="text-right text-muted my-0">Priority: <%= t.priority %></p>
+      <p class="text-muted my-0">
+        [Priority] <strong><%= t.priority %></strong>
+        [Start date] <strong><%= t.start_date %></strong>
+        [End date] <strong><%= t.end_date %></strong>
+      </p>
       <div class="progress mb-3">
         <% progress = t.progress_percent %>
         <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"

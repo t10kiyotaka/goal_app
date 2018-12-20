@@ -29,7 +29,7 @@ class My::TasksController < ApplicationController
 
   private
     def task_params
-      params.require(:task).permit(:description, :priority, :progress_percent)
+      params.require(:task).permit(:description, :priority, :progress_percent, :start_date, :end_date)
     end
 
     def find_task
