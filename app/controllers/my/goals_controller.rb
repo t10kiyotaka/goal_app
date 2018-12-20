@@ -30,7 +30,7 @@ class My::GoalsController < ApplicationController
 
   private
     def goal_params
-      params.require(:goal).permit(:description, :priority, :progress_percent)
+      params.require(:goal).permit(:description, :priority, :progress_percent, :start_date, :end_date)
     end
 
     def find_goal

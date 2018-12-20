@@ -15,6 +15,10 @@
           <span class="text-muted">Created_at: <%= @goal.created_at %></span> /
           <span class="text-muted">Updated_at: <%= @goal.updated_at %></span>
         </p>
+        <p class="card-text">
+          [Start date] <strong><%= @goal.start_date %></strong> ,
+          [End date] <strong><%= @goal.end_date %></strong>
+        </p>
         <div class="progress mb-3">
           <% progress = @goal.progress_percent %>
           <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"

@@ -11,7 +11,11 @@
             <%= render 'goals/achieve' %>
             <%= g.description %>
           </h5>
-          <p class="card-text text-muted">Created_at: <%= g.created_at %></p>
+          <p class="card-text text-muted">
+            [Priority] <strong><%= g.priority %></strong> ,
+            [Start date] <strong><%= g.start_date %></strong> ,
+            [End date] <strong><%= g.end_date %></strong>
+          </p>
           <div class="progress mb-3">
             <% progress = g.progress_percent %>
             <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar"

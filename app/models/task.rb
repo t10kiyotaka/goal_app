@@ -6,5 +6,6 @@ class Task < ApplicationRecord
   validates :progress_percent, presence: true, numericality: { greater_than_or_equal_to: 0,
                                                less_than_or_equal_to: 100,
                                                only_integer: true }
-
+  validates :start_date, presence: true
+  validates :end_date, presence: true
 end
