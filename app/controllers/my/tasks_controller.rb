@@ -1,5 +1,4 @@
-class My::TasksController < ApplicationController
-  before_action :authenticate_user!
+class My::TasksController < AuthController
   before_action :find_task, except: [:create]
 
   def create

@@ -1,4 +1,4 @@
-class My::GoalsController < ApplicationController
+class My::GoalsController < AuthController
   before_action :find_goal, except: %i[create]
 
   def show
