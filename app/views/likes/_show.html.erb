@@ -1,4 +1,4 @@
-<% g ||= @goal || @g %>
+
 
 <% if Like.where(goal_id: g.id, user_id: current_user&.id).present? %>
   <%= link_to like_path(g), method: :delete do %>

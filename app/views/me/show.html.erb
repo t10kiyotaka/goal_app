@@ -24,8 +24,7 @@
             </div>
           </div>
 
-          <% @g = g %>
-          <%= render 'likes/show' %>
+          <%= render 'likes/show', g: g %>
 
           <%= link_to "Show", my_goal_path(g), class: "btn btn-primary" %>
           <%= link_to "Edit", edit_my_goal_path(g), class: "btn btn-primary" %>
