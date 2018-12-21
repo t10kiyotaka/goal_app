@@ -39,7 +39,7 @@
     </div>
     <h4 class="text-center"><%= @user.name %></h4>
     <h3>Add new goals</h3>
-    <%= render 'my/goals/new' %>
+    <%= render 'my/goals/form', model: [:my, @user.goals.build] %>
   </div>
 
 </div>
