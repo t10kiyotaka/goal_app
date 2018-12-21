@@ -7,8 +7,7 @@
       <div class="card my-2">
         <div class="card-body">
           <h5 class="card-title">
-            <% @g = g %>
-            <%= render 'goals/achieve' %>
+            <%= render 'goals/achieve', g: g %>
             <%= g.description %>
           </h5>
           <p class="card-text text-muted">
@@ -24,8 +23,7 @@
             </div>
           </div>
 
-          <% @g = g %>
-          <%= render 'likes/show' %>
+          <%= render 'likes/show', g: g %>
 
           <%= link_to "Show", my_goal_path(g), class: "btn btn-primary" %>
           <%= link_to "Edit", edit_my_goal_path(g), class: "btn btn-primary" %>
@@ -41,7 +39,7 @@
     </div>
     <h4 class="text-center"><%= @user.name %></h4>
     <h3>Add new goals</h3>
-    <%= render 'my/goals/new' %>
+    <%= render 'my/goals/form', model: [:my, @user.goals.build] %>
   </div>
 
 </div>
