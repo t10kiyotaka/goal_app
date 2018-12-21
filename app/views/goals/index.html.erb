@@ -13,8 +13,7 @@
       <div class="card-body">
         <h5 class="card-title">
           <%= image_tag(get_gravatar_url(g.user.email), size: 30) %>
-          <% @g = g %>
-          <%= render 'goals/achieve' %>
+          <%= render 'goals/achieve', g: g %>
           <%= g.description %>
         </h5>
         <div class="progress mb-3">

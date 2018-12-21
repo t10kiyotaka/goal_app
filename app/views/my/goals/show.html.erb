@@ -7,7 +7,7 @@
     <div class="card my-2">
       <div class="card-body">
         <h5 class="card-title">
-          <%= render 'goals/achieve' %>
+          <%= render 'goals/achieve', g: @goal %>
           <%= @goal.description %>
         </h5>
         <p class="card-text">
