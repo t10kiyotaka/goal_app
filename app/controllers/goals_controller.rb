@@ -14,7 +14,7 @@ class GoalsController < ApplicationController
     when "Least recently created"
       @goals = Goal.page(params[:page]).per(5).order(created_at: :asc)
     when "Most liked"
-      @goals = Goal.page(params[:page]).per(5).joins(:likes).group(:goal_id).order('count(goal_id) desc')
+      @goals = Goal.page(params[:page]).per(5).joins(:likes).group("goals.id").order('count(goal_id) desc')
     end
   end
 
